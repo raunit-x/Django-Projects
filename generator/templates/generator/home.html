@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Password Generator Home</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+
+<div class="select2-container--classic text-center">
+    <h1>Welcome to the password Generator</h1>
+    <form action="{% url 'password' %}">
+        <label>
+            <select name="length">
+                {% for x in list %}
+                    {% if x == 12 %}
+                        <option value="{{ x }}" selected="selected">{{ x }}</option>
+                    {% else %}
+                        <option value="{{ x }}">{{ x }}</option>
+                    {% endif %}
+                {% endfor %}
+            </select>
+        </label> Length
+        <br>
+        <label>
+            <input type="checkbox" name="uppercase">
+        </label> Uppercase
+        <br>
+        <label>
+            <input type="checkbox" name="number">
+        </label> Numbers
+        <br>
+        <label>
+            <input type="checkbox" name="special">
+        </label> Special Characters
+        <br>
+        <input type="submit" value="Generate Password" class="btn btn-primary">
+    </form>
+</div>
+<br>
+<br>
+<div class="container text-center">
+    <a href="{% url 'about' %}">About Page</a>
+</div>
+</body>
+</html>
